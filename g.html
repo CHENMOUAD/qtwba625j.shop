@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <script>
-function ya2() {
+      function ya2() {
             // WhatsApp redirect function as requested
-            window.open('https://wa.me/123213', '_blank');
+            window.open('https://wa.me/', '_blank');
         }
+
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -385,6 +386,381 @@ function ya2() {
             100% { background-position: 0% 50%; }
         }
 
+        .market-trends-visualization {
+            width: 100%;
+            max-width: 900px;
+            margin: 3rem 0;
+        }
+
+        .trending-stocks-panel {
+            background: rgba(27, 38, 59, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--cosmic-accent);
+        }
+
+        .trends-section-title {
+            color: var(--neon-cyan);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+        }
+
+        .dynamic-chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background: var(--cosmic-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--cosmic-accent);
+            overflow: hidden;
+        }
+
+        .market-trend-chart {
+            width: 100%;
+            height: 200px;
+            filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.3));
+        }
+
+        .trend-line {
+            animation: lineGlow 2s ease-in-out infinite alternate;
+        }
+
+        .pulse-point {
+            animation: pointPulse 1.5s ease-in-out infinite;
+        }
+
+        .floating-indicators text {
+            animation: textFloat 3s ease-in-out infinite;
+        }
+
+        .market-stats-overlay {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .stat-bubble {
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            text-align: center;
+            flex: 1;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-bubble:hover {
+            background: rgba(0, 245, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .stat-bubble .stat-value {
+            color: var(--neon-gold);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-bubble .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        @keyframes lineGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.5)); }
+            100% { filter: drop-shadow(0 0 15px rgba(0, 255, 65, 0.8)); }
+        }
+
+        @keyframes pointPulse {
+            0%, 100% { 
+                r: 4; 
+                opacity: 1;
+            }
+            50% { 
+                r: 6; 
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes textFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .large-point {
+            animation: largePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes largePulse {
+            0%, 100% { 
+                r: 5; 
+                opacity: 1;
+                filter: drop-shadow(0 0 5px currentColor);
+            }
+            50% { 
+                r: 8; 
+                opacity: 0.6;
+                filter: drop-shadow(0 0 10px currentColor);
+            }
+        }
+
+        .symbol-text {
+            animation: symbolPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes symbolPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .percentage-text {
+            animation: percentageFloat 3.5s ease-in-out infinite;
+        }
+
+        @keyframes percentageFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-4px) scale(1.05); }
+        }
+
+        .ma-line {
+            animation: dashMove 4s linear infinite;
+        }
+
+        @keyframes dashMove {
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 16; }
+        }
+
+        .volume-bars rect {
+            animation: volumePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes volumePulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(1); }
+            50% { opacity: 0.7; transform: scaleY(1.2); }
+        }
+
+        .primary-area {
+            animation: areaShimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes areaShimmer {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 0.8; }
+        }
+
+        .secondary-line {
+            animation: secondaryGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes secondaryGlow {
+            0% { opacity: 0.6; stroke-width: 2; }
+            100% { opacity: 0.9; stroke-width: 2.5; }
+        }
+
+        .animated-value {
+            animation: valueCounter 2s ease-in-out infinite;
+        }
+
+        @keyframes valueCounter {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); color: var(--matrix-green); }
+        }
+
+        .trend-arrow {
+            animation: arrowBounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-3px) rotate(5deg); }
+        }
+
+        .pulse-text {
+            animation: livePulse 1s ease-in-out infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; color: var(--neon-gold); }
+            50% { opacity: 0.6; color: var(--matrix-green); }
+        }
+
+        .volume-indicator {
+            animation: volumeCounter 2.5s ease-in-out infinite;
+        }
+
+        @keyframes volumeCounter {
+            0%, 100% { transform: scale(1); }
+            33% { transform: scale(1.02); color: var(--neon-cyan); }
+            66% { transform: scale(0.98); color: var(--neon-purple); }
+        }
+
+        .ai-performance-metrics {
+            width: 100%;
+            max-width: 800px;
+            margin: 3rem 0;
+        }
+
+        .metrics-section-title {
+            color: var(--neon-purple);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+
+        .performance-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-module {
+            background: var(--cosmic-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--cosmic-accent);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .stat-module::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.1), transparent);
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-module:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
+        }
+
+        .stat-module:hover::before {
+            opacity: 1;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--neon-gold);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .user-testimonials-feed {
+            width: 100%;
+            max-width: 800px;
+            margin: 3rem 0;
+        }
+
+        .testimonials-section-title {
+            color: var(--success-emerald);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(80, 200, 120, 0.5);
+        }
+
+        .testimonials-timeline {
+            background: rgba(27, 38, 59, 0.6);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--cosmic-accent);
+        }
+
+        .testimonial-entry {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--cosmic-accent);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-entry:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .testimonial-entry:hover {
+            transform: translateX(10px);
+            background: rgba(0, 245, 255, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0 -1rem 2rem -1rem;
+        }
+
+        .entry-date {
+            flex-shrink: 0;
+            width: 80px;
+            font-size: 0.9rem;
+            color: var(--neon-cyan);
+            font-weight: 600;
+            padding-top: 0.2rem;
+        }
+
+        .entry-content {
+            flex: 1;
+        }
+
+        .username {
+            color: var(--neon-gold);
+            font-weight: 600;
+        }
+
+        .stock-code {
+            color: var(--matrix-green);
+            font-weight: 700;
+            background: rgba(0, 255, 65, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .analyzed-text {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .feedback-text {
+            color: var(--text-primary);
+            font-style: italic;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
         @media (max-width: 768px) {
             .neural-container {
                 padding: 1rem 0.5rem;
@@ -404,6 +780,42 @@ function ya2() {
                 margin-top: 3rem;
                 padding: 1.5rem;
             }
+
+            .performance-stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.8rem;
+            }
+
+            .stat-module {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .stat-icon {
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .testimonial-entry {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .entry-date {
+                width: auto;
+            }
+
+            .trending-stocks-panel,
+            .testimonials-timeline {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -415,11 +827,11 @@ function ya2() {
             </div>
             
             <div class="quantum-title-block">
-                <h1 class="primary-quantum-headline">AI Stock Data Analysis Tool</h1>
-              <!--  <h2 class="secondary-quantum-subtitle">Prediction Accuracy Reaches 99.8%</h2> -->
-                <p class="neural-description-text">
+                <h1 class="primary-quantum-headline">2025 Stock Market Analysis Tools</h1>
+                <h2 class="secondary-quantum-subtitle">Enter your stock symbol or the stock symbol you are interested in below.</h2>
+               <!-- <p class="neural-description-text">
                     Enter your stock code or interested stock code below, and the AI system will complete the analysis within 1.5 seconds. Currently, 536,213 people are viewing the complete report for free!
-                </p>
+                </p>-->
             </div>
             
             <div class="quantum-input-assembly">
@@ -429,6 +841,209 @@ function ya2() {
                 </button>
             </div>
             
+            <div class="market-trends-visualization">
+                <div class="trending-stocks-panel">
+                    <h3 class="trends-section-title">Live Market Trends</h3>
+                    <div class="dynamic-chart-container">
+                        <svg class="market-trend-chart" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Advanced Gradients -->
+                            <defs>
+                                <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00FF41;stop-opacity:0.4" />
+                                    <stop offset="50%" style="stop-color:#00F5FF;stop-opacity:0.2" />
+                                    <stop offset="100%" style="stop-color:#8A2BE2;stop-opacity:0" />
+                                </linearGradient>
+                                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#00F5FF" />
+                                    <stop offset="25%" style="stop-color:#00FF41" />
+                                    <stop offset="50%" style="stop-color:#FFD700" />
+                                    <stop offset="75%" style="stop-color:#8A2BE2" />
+                                    <stop offset="100%" style="stop-color:#FF6B6B" />
+                                </linearGradient>
+                                <linearGradient id="secondaryLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.7" />
+                                    <stop offset="50%" style="stop-color:#FFD700;stop-opacity:0.7" />
+                                    <stop offset="100%" style="stop-color:#00F5FF;stop-opacity:0.7" />
+                                </linearGradient>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge> 
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            
+                            <!-- Enhanced Background Grid -->
+                            <g class="grid-lines" opacity="0.3">
+                                <line x1="0" y1="30" x2="800" y2="30" stroke="#415A77" stroke-width="0.5"/>
+                                <line x1="0" y1="50" x2="800" y2="50" stroke="#415A77" stroke-width="0.5"/>
+                                <line x1="0" y1="70" x2="800" y2="70" stroke="#415A77" stroke-width="1"/>
+                                <line x1="0" y1="90" x2="800" y2="90" stroke="#415A77" stroke-width="0.5"/>
+                                <line x1="0" y1="110" x2="800" y2="110" stroke="#415A77" stroke-width="1"/>
+                                <line x1="0" y1="130" x2="800" y2="130" stroke="#415A77" stroke-width="0.5"/>
+                                <line x1="0" y1="150" x2="800" y2="150" stroke="#415A77" stroke-width="1"/>
+                                <line x1="0" y1="170" x2="800" y2="170" stroke="#415A77" stroke-width="0.5"/>
+                                <line x1="80" y1="20" x2="80" y2="180" stroke="#415A77" stroke-width="0.5"/>
+                                <line x1="160" y1="20" x2="160" y2="180" stroke="#415A77" stroke-width="1"/>
+                                <line x1="240" y1="20" x2="240" y2="180" stroke="#415A77" stroke-width="0.5"/>
+                                <line x1="320" y1="20" x2="320" y2="180" stroke="#415A77" stroke-width="1"/>
+                                <line x1="400" y1="20" x2="400" y2="180" stroke="#415A77" stroke-width="0.5"/>
+                                <line x1="480" y1="20" x2="480" y2="180" stroke="#415A77" stroke-width="1"/>
+                                <line x1="560" y1="20" x2="560" y2="180" stroke="#415A77" stroke-width="0.5"/>
+                                <line x1="640" y1="20" x2="640" y2="180" stroke="#415A77" stroke-width="1"/>
+                                <line x1="720" y1="20" x2="720" y2="180" stroke="#415A77" stroke-width="0.5"/>
+                            </g>
+                            
+                            <!-- Multiple Market Trend Areas -->
+                            <path class="trend-area primary-area" d="M 0 140 L 80 120 L 160 100 L 240 80 L 320 75 L 400 65 L 480 70 L 560 55 L 640 45 L 720 40 L 800 35 L 800 180 L 0 180 Z" 
+                                  fill="url(#chartGradient)" opacity="0.6"/>
+                            
+                            <path class="trend-area secondary-area" d="M 0 150 L 80 135 L 160 125 L 240 115 L 320 110 L 400 105 L 480 100 L 560 95 L 640 85 L 720 80 L 800 75 L 800 180 L 0 180 Z" 
+                                  fill="url(#secondaryLine)" opacity="0.3"/>
+                            
+                            <!-- Main Trend Lines -->
+                            <path class="trend-line primary-line" d="M 0 140 L 80 120 L 160 100 L 240 80 L 320 75 L 400 65 L 480 70 L 560 55 L 640 45 L 720 40 L 800 35" 
+                                  stroke="url(#lineGradient)" stroke-width="3" fill="none" filter="url(#glow)"/>
+                                  
+                            <path class="trend-line secondary-line" d="M 0 150 L 80 135 L 160 125 L 240 115 L 320 110 L 400 105 L 480 100 L 560 95 L 640 85 L 720 80 L 800 75" 
+                                  stroke="url(#secondaryLine)" stroke-width="2" fill="none" opacity="0.8"/>
+                            
+                            <!-- Enhanced Data Points -->
+                            <g class="data-points">
+                                <circle cx="80" cy="120" r="3" fill="#00F5FF" class="pulse-point"/>
+                                <circle cx="160" cy="100" r="4" fill="#00F5FF" class="pulse-point large-point"/>
+                                <circle cx="240" cy="80" r="3" fill="#00FF41" class="pulse-point"/>
+                                <circle cx="320" cy="75" r="5" fill="#00FF41" class="pulse-point large-point"/>
+                                <circle cx="400" cy="65" r="3" fill="#FFD700" class="pulse-point"/>
+                                <circle cx="480" cy="70" r="4" fill="#FFD700" class="pulse-point large-point"/>
+                                <circle cx="560" cy="55" r="3" fill="#8A2BE2" class="pulse-point"/>
+                                <circle cx="640" cy="45" r="5" fill="#8A2BE2" class="pulse-point large-point"/>
+                                <circle cx="720" cy="40" r="3" fill="#FF6B6B" class="pulse-point"/>
+                                <circle cx="800" cy="35" r="4" fill="#FF6B6B" class="pulse-point large-point"/>
+                            </g>
+                            
+                            <!-- Stock Symbols on Chart -->
+                            <g class="chart-stock-symbols">
+                                <text x="160" y="95" text-anchor="middle" fill="#00F5FF" font-size="10" font-weight="bold" class="symbol-text">ST-A</text>
+                                <text x="320" y="70" text-anchor="middle" fill="#00FF41" font-size="10" font-weight="bold" class="symbol-text">ST-B</text>
+                                <text x="480" y="65" text-anchor="middle" fill="#FFD700" font-size="10" font-weight="bold" class="symbol-text">ST-C</text>
+                                <text x="640" y="40" text-anchor="middle" fill="#8A2BE2" font-size="10" font-weight="bold" class="symbol-text">ST-D</text>
+                                <text x="800" y="30" text-anchor="middle" fill="#FF6B6B" font-size="10" font-weight="bold" class="symbol-text">ST-E</text>
+                            </g>
+                            
+                            <!-- Floating Percentage Indicators -->
+                            <g class="floating-indicators">
+                                <text x="160" y="85" text-anchor="middle" fill="#00F5FF" font-size="11" font-weight="bold" class="percentage-text">+2.34%</text>
+                                <text x="320" y="60" text-anchor="middle" fill="#00FF41" font-size="11" font-weight="bold" class="percentage-text">+1.89%</text>
+                                <text x="480" y="55" text-anchor="middle" fill="#FFD700" font-size="11" font-weight="bold" class="percentage-text">-0.67%</text>
+                                <text x="640" y="30" text-anchor="middle" fill="#8A2BE2" font-size="11" font-weight="bold" class="percentage-text">+0.92%</text>
+                                <text x="800" y="20" text-anchor="middle" fill="#FF6B6B" font-size="11" font-weight="bold" class="percentage-text">+1.45%</text>
+                            </g>
+                            
+                            <!-- Moving Average Lines -->
+                            <g class="moving-averages">
+                                <path class="ma-line" d="M 0 120 L 100 115 L 200 110 L 300 105 L 400 100 L 500 95 L 600 90 L 700 85 L 800 80" 
+                                      stroke="#00F5FF" stroke-width="1" fill="none" opacity="0.5" stroke-dasharray="5,5"/>
+                                <path class="ma-line" d="M 0 130 L 100 125 L 200 120 L 300 115 L 400 110 L 500 105 L 600 100 L 700 95 L 800 90" 
+                                      stroke="#FFD700" stroke-width="1" fill="none" opacity="0.5" stroke-dasharray="3,3"/>
+                            </g>
+                            
+                            <!-- Volume Bars -->
+                            <g class="volume-bars" opacity="0.4">
+                                <rect x="150" y="170" width="8" height="10" fill="#00F5FF"/>
+                                <rect x="230" y="165" width="8" height="15" fill="#00FF41"/>
+                                <rect x="310" y="160" width="8" height="20" fill="#FFD700"/>
+                                <rect x="390" y="175" width="8" height="5" fill="#8A2BE2"/>
+                                <rect x="470" y="168" width="8" height="12" fill="#FF6B6B"/>
+                                <rect x="550" y="162" width="8" height="18" fill="#00F5FF"/>
+                                <rect x="630" y="155" width="8" height="25" fill="#00FF41"/>
+                                <rect x="710" y="172" width="8" height="8" fill="#FFD700"/>
+                            </g>
+                        </svg>
+                        
+                        <!-- Enhanced Market Stats -->
+                        <div class="market-stats-overlay">
+                            <div class="stat-bubble">
+                                <div class="stat-value animated-value">+4.2%</div>
+                                <div class="stat-label">Market Average</div>
+                            </div>
+                            <div class="stat-bubble">
+                                <div class="stat-value trend-arrow">↗</div>
+                                <div class="stat-label">Trending Up</div>
+                            </div>
+                            <div class="stat-bubble">
+                                <div class="stat-value pulse-text">Live</div>
+                                <div class="stat-label">Real-time Data</div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-performance-metrics">
+                <h3 class="metrics-section-title">AI Analysis Performance</h3>
+                <div class="performance-stats-grid">
+                    <div class="stat-module">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-value">2s</div>
+                        <div class="stat-label">Processing Speed</div>
+                    </div>
+                    <div class="stat-module">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-value">23,829</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-module">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">Accuracy Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-testimonials-feed">
+                <h3 class="testimonials-section-title">Recent User Feedback</h3>
+                <div class="testimonials-timeline">
+                    <div class="testimonial-entry">
+                        <div class="entry-date">June 25</div>
+                        <div class="entry-content">
+                            <span class="username">Michael_t****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">**ADBE</span>
+                            <div class="feedback-text">"AI prediction was spot on! Stock moved exactly as forecasted. Impressive accuracy!"</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-entry">
+                        <div class="entry-date">June 24</div>
+                        <div class="entry-content">
+                            <span class="username">Sarah_i****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">**ADSK</span>
+                            <div class="feedback-text">"The analysis helped me make a profitable trade. The speed is incredible - truly 2 seconds!"</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-entry">
+                        <div class="entry-date">June 23</div>
+                        <div class="entry-content">
+                            <span class="username">Robert_f****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">**BHF</span>
+                            <div class="feedback-text">"Best AI tool I've used. The market analysis depth is remarkable for such quick processing."</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-entry">
+                        <div class="entry-date">June 22</div>
+                        <div class="entry-content">
+                            <span class="username">Emily_s****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">**BKNG</span>
+                            <div class="feedback-text">"Saved me from a bad investment decision. The AI caught market signals I missed!"</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-entry">
+                        <div class="entry-date">June 21</div>
+                        <div class="entry-content">
+                            <span class="username">David_p****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">**FUL</span>
+                            <div class="feedback-text">"Outstanding prediction accuracy. This AI system is a game-changer for retail investors."</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="risk-disclosure-section">
                 <div class="warning-title-block">⚠️ Important Risk Disclosure</div>
                 <ul class="disclosure-content-list">
@@ -534,8 +1149,7 @@ function ya2() {
             completionOverlay.style.display = 'flex';
         }
 
-        
-
+  
         // Close modals when clicking outside
         document.addEventListener('click', function(event) {
             const progressModal = document.getElementById('progressModalOverlay');
