@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <script>
-      function ya2() {
+  function ya2() {
             // WhatsApp redirect function as requested
             window.open('https://wa.me/', '_blank');
         }
@@ -41,6 +41,28 @@
             background: linear-gradient(135deg, var(--cosmic-primary) 0%, var(--cosmic-secondary) 50%, var(--cosmic-accent) 100%);
             position: relative;
             overflow-x: hidden;
+            padding-top: 50px;
+        }
+
+        .risk-warning-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, var(--warning-yellow), #FFA500);
+            color: #000;
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            animation: warningPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes warningPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
         .quantum-grid-backdrop::before {
@@ -692,37 +714,54 @@
             text-shadow: 0 0 10px rgba(80, 200, 120, 0.5);
         }
 
-        .testimonials-timeline {
+        .testimonials-scroll-container {
             background: rgba(27, 38, 59, 0.6);
             border-radius: 16px;
             padding: 2rem;
             border: 1px solid var(--cosmic-accent);
+            height: 160px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .testimonial-entry {
+        .testimonials-scroll-track {
+            height: 100%;
+            position: relative;
+            width: 100%;
+        }
+
+        .testimonial-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             gap: 1.5rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--cosmic-accent);
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-entry:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .testimonial-entry:hover {
-            transform: translateX(10px);
-            background: rgba(0, 245, 255, 0.05);
-            border-radius: 8px;
             padding: 1rem;
-            margin: 0 -1rem 2rem -1rem;
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+            opacity: 1;
         }
 
-        .entry-date {
+        .testimonial-item.active {
+            transform: translateY(0);
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .testimonial-item.next {
+            transform: translateY(100%);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .testimonial-item.prev {
+            transform: translateY(-100%);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .item-date {
             flex-shrink: 0;
             width: 80px;
             font-size: 0.9rem;
@@ -731,7 +770,7 @@
             padding-top: 0.2rem;
         }
 
-        .entry-content {
+        .item-content {
             flex: 1;
         }
 
@@ -781,45 +820,84 @@
                 padding: 1.5rem;
             }
 
+            .ai-performance-metrics {
+                margin: 1.5rem 0;
+            }
+
+            .metrics-section-title {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
             .performance-stats-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 0.8rem;
-            }
-
-            .stat-module {
-                padding: 1.2rem 0.8rem;
-            }
-
-            .stat-icon {
-                font-size: 1.8rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .stat-value {
-                font-size: 1.5rem;
-            }
-
-            .stat-label {
-                font-size: 0.8rem;
-            }
-
-            .testimonial-entry {
-                flex-direction: column;
                 gap: 0.5rem;
             }
 
-            .entry-date {
-                width: auto;
+            .stat-module {
+                padding: 0.8rem 0.5rem;
             }
 
-            .trending-stocks-panel,
-            .testimonials-timeline {
+            .stat-icon {
+                font-size: 1.5rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .stat-value {
+                font-size: 1.2rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .testimonials-scroll-container {
+                height: 180px;
                 padding: 1.5rem;
+            }
+
+            .testimonial-item {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.8rem;
+                height: 100%;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+
+            .item-date {
+                width: auto;
+                flex-shrink: 0;
+            }
+
+            .item-content {
+                flex: 1;
+                min-height: 0;
+            }
+
+            .feedback-text {
+                font-size: 0.9rem;
+                margin-top: 0.3rem;
+                line-height: 1.4;
+            }
+
+            .trending-stocks-panel {
+                padding: 1.5rem;
+            }
+
+            .risk-warning-bar {
+                font-size: 0.8rem;
+                padding: 10px 15px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="risk-warning-bar">
+        The results are for reference only and do not constitute investment advice
+    </div>
+
     <div class="cosmic-viewport quantum-grid-backdrop stellar-particles">
         <div class="neural-container">
             <div class="ai-avatar-module">
@@ -827,11 +905,11 @@
             </div>
             
             <div class="quantum-title-block">
-                <h1 class="primary-quantum-headline">2025 Stock Market Analysis Tools</h1>
-                <h2 class="secondary-quantum-subtitle">Enter your stock symbol or the stock symbol you are interested in below.</h2>
-               <!-- <p class="neural-description-text">
+                <h1 class="primary-quantum-headline">2025 Most Powerful AI Stock Price Prediction</h1>
+                <h2 class="secondary-quantum-subtitle">Prediction Accuracy Reaches 99.8%</h2>
+                <p class="neural-description-text">
                     Enter your stock code or interested stock code below, and the AI system will complete the analysis within 1.5 seconds. Currently, 536,213 people are viewing the complete report for free!
-                </p>-->
+                </p>
             </div>
             
             <div class="quantum-input-assembly">
@@ -976,7 +1054,7 @@
                                 <div class="stat-value pulse-text">Live</div>
                                 <div class="stat-label">Real-time Data</div>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -1005,40 +1083,70 @@
 
             <div class="user-testimonials-feed">
                 <h3 class="testimonials-section-title">Recent User Feedback</h3>
-                <div class="testimonials-timeline">
-                    <div class="testimonial-entry">
-                        <div class="entry-date">June 25</div>
-                        <div class="entry-content">
-                            <span class="username">Michael_t****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">**ADBE</span>
-                            <div class="feedback-text">"AI prediction was spot on! Stock moved exactly as forecasted. Impressive accuracy!"</div>
+                <div class="testimonials-scroll-container">
+                    <div class="testimonials-scroll-track" id="scrollTrack">
+                        <div class="testimonial-item active" data-index="0">
+                            <div class="item-date">June 25</div>
+                            <div class="item-content">
+                                <span class="username">Michael_t****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">MIDD</span>
+                                <div class="feedback-text">"The AI analysis provided comprehensive data points and market insights for my research."</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="testimonial-entry">
-                        <div class="entry-date">June 24</div>
-                        <div class="entry-content">
-                            <span class="username">Sarah_i****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">**ADSK</span>
-                            <div class="feedback-text">"The analysis helped me make a profitable trade. The speed is incredible - truly 2 seconds!"</div>
+                        
+                        <div class="testimonial-item next" data-index="1">
+                            <div class="item-date">June 24</div>
+                            <div class="item-content">
+                                <span class="username">Sarah_i****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">MNRO</span>
+                                <div class="feedback-text">"The system generated detailed technical analysis charts within the promised time frame."</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="testimonial-entry">
-                        <div class="entry-date">June 23</div>
-                        <div class="entry-content">
-                            <span class="username">Robert_f****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">**BHF</span>
-                            <div class="feedback-text">"Best AI tool I've used. The market analysis depth is remarkable for such quick processing."</div>
+                        
+                        <div class="testimonial-item next" data-index="2">
+                            <div class="item-date">June 23</div>
+                            <div class="item-content">
+                                <span class="username">Robert_f****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">GOOG</span>
+                                <div class="feedback-text">"The platform offers comprehensive market analysis tools with quick processing capabilities."</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="testimonial-entry">
-                        <div class="entry-date">June 22</div>
-                        <div class="entry-content">
-                            <span class="username">Emily_s****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">**BKNG</span>
-                            <div class="feedback-text">"Saved me from a bad investment decision. The AI caught market signals I missed!"</div>
+                        
+                        <div class="testimonial-item next" data-index="3">
+                            <div class="item-date">June 22</div>
+                            <div class="item-content">
+                                <span class="username">Emily_s****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">GRAB</span>
+                                <div class="feedback-text">"The platform provides useful market indicators and technical analysis for informed decisions."</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="testimonial-entry">
-                        <div class="entry-date">June 21</div>
-                        <div class="entry-content">
-                            <span class="username">David_p****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">**FUL</span>
-                            <div class="feedback-text">"Outstanding prediction accuracy. This AI system is a game-changer for retail investors."</div>
+                        
+                        <div class="testimonial-item next" data-index="4">
+                            <div class="item-date">June 21</div>
+                            <div class="item-content">
+                                <span class="username">David_p****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">CRWD</span>
+                                <div class="feedback-text">"The platform delivers comprehensive analytical reports with various market indicators."</div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-item next" data-index="5">
+                            <div class="item-date">June 20</div>
+                            <div class="item-content">
+                                <span class="username">Lisa_m****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">CSTL</span>
+                                <div class="feedback-text">"The system provides detailed historical data and trend analysis for research purposes."</div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-item next" data-index="6">
+                            <div class="item-date">June 19</div>
+                            <div class="item-content">
+                                <span class="username">John_w****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">CDNA</span>
+                                <div class="feedback-text">"The interface is intuitive and the analytical reports are generated quickly as advertised."</div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-item next" data-index="7">
+                            <div class="item-date">June 18</div>
+                            <div class="item-content">
+                                <span class="username">Anna_k****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">CCJ</span>
+                                <div class="feedback-text">"The platform offers real-time data processing and comprehensive market analysis tools."</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1047,7 +1155,7 @@
             <div class="risk-disclosure-section">
                 <div class="warning-title-block">⚠️ Important Risk Disclosure</div>
                 <ul class="disclosure-content-list">
-                    <li>The stock analysis provided by this tool is based on algorithmic models and historical data. It is for informational purposes only and does not constitute any investment advice, securities recommendation or trading basis. Artificial intelligence analysis has limitations and cannot replace the judgment of professional financial advisors.</li>
+                  <li>The stock analysis provided by this tool is based on algorithmic models and historical data. It is for informational purposes only and does not constitute any investment advice, securities recommendation or trading basis. Artificial intelligence analysis has limitations and cannot replace the judgment of professional financial advisors.</li>
                     <li>The securities market is inherently risky, and users are solely responsible for any investment decisions made based on the conclusions of this tool. The Company and the technology provider do not assume any legal responsibility for any direct or indirect losses caused by the use of or reliance on this service.</li>
                     <li>The analysis results rely on public market data, which may be delayed, incorrect or missing. We do not guarantee the accuracy or completeness of the data, and do not promise to update the information in a timely manner..</li>
                     <li>AI models may be affected by algorithmic bias, market extremes or black swan events, and the analysis conclusions do not represent actual future performance. Historical returns do not represent future returns..</li>
@@ -1055,7 +1163,7 @@
                 </ul>
                 
                 <div class="footer-legal-navigation">
-                    <a href="policy.html" class="legal-link-element" target="_blank">Privacy Policy</a>
+				   <a href="policy.html" class="legal-link-element" target="_blank">Privacy Policy</a>
                     <a href="terms.html" class="legal-link-element" target="_blank">Terms of Service</a>
 					 <a href="Disclaimer.html" class="legal-link-element" target="_blank">Disclaimer</a>
                     <a href="risk_warning.html" class="legal-link-element" target="_blank">Risk Warning</a>
@@ -1090,6 +1198,36 @@
     </div>
 
     <script>
+        // Testimonials Vertical Scroll
+        let currentIndex = 0;
+        const testimonialItems = document.querySelectorAll('.testimonial-item');
+        const totalItems = testimonialItems.length;
+
+        function updateTestimonialClasses() {
+            testimonialItems.forEach((item, index) => {
+                item.classList.remove('active', 'next', 'prev');
+                
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                } else if (index > currentIndex) {
+                    item.classList.add('next');
+                } else {
+                    item.classList.add('prev');
+                }
+            });
+        }
+
+        function nextTestimonial() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateTestimonialClasses();
+        }
+
+        // Initialize classes
+        updateTestimonialClasses();
+
+        // Auto-scroll every 2 seconds
+        setInterval(nextTestimonial, 2000);
+
         function initiateQuantumAnalysis() {
             const stockInput = document.getElementById('stockSymbolInput');
             const symbolValue = stockInput.value.trim();
@@ -1149,7 +1287,7 @@
             completionOverlay.style.display = 'flex';
         }
 
-  
+      
         // Close modals when clicking outside
         document.addEventListener('click', function(event) {
             const progressModal = document.getElementById('progressModalOverlay');
