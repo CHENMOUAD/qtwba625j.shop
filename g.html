@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <script>
-   function ya2() {
+  function ya2() {
             // WhatsApp redirect function as requested
-            window.open('https://wa.me/11', '_blank');
+            window.open('https://wa.me/', '_blank');
         }
 </script>
     <meta charset="UTF-8">
@@ -124,7 +124,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background-image: url('https://www.jacmsotck.online/415rirenshen/15.jpg');
+            background-image: url('img/2.jpg');
             background-size: cover;
             background-position: center;
             border: 2px solid var(--cosmic-primary);
@@ -625,6 +625,34 @@
             66% { transform: scale(0.98); color: var(--neon-purple); }
         }
 
+        .featured-image-section {
+            width: 100%;
+            max-width: 600px;
+            margin: 3rem 0;
+        }
+
+        .image-container {
+            background: rgba(27, 38, 59, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--cosmic-accent);
+            text-align: center;
+        }
+
+        .featured-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 245, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .featured-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 245, 255, 0.5);
+        }
+
         .ai-performance-metrics {
             width: 100%;
             max-width: 800px;
@@ -894,7 +922,7 @@
 </head>
 <body>
     <div class="risk-warning-bar">
-       Investment carries risks and does not constitute any advice
+        Investment carries risks and does not constitute any advice
     </div>
 
     <div class="cosmic-viewport quantum-grid-backdrop stellar-particles">
@@ -918,138 +946,13 @@
                 </button>
             </div>
             
-            <div class="market-trends-visualization">
-                <div class="trending-stocks-panel">
-                    <h3 class="trends-section-title">Trend Forecast</h3>
-                    <div class="dynamic-chart-container">
-                        <svg class="market-trend-chart" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Simple Background Grid -->
-                            <g class="grid-lines" opacity="0.2">
-                                <line x1="10" y1="10" x2="90" y2="10" stroke="#415A77" stroke-width="0.2"/>
-                                <line x1="10" y1="20" x2="90" y2="20" stroke="#415A77" stroke-width="0.2"/>
-                                <line x1="10" y1="30" x2="90" y2="30" stroke="#415A77" stroke-width="0.2"/>
-                                <line x1="10" y1="40" x2="90" y2="40" stroke="#415A77" stroke-width="0.2"/>
-                                
-                                <line x1="10" y1="8" x2="10" y2="42" stroke="#415A77" stroke-width="0.3"/>
-                                <line x1="30" y1="8" x2="30" y2="42" stroke="#415A77" stroke-width="0.2"/>
-                                <line x1="50" y1="8" x2="50" y2="42" stroke="#415A77" stroke-width="0.2"/>
-                                <line x1="70" y1="8" x2="70" y2="42" stroke="#415A77" stroke-width="0.2"/>
-                                <line x1="90" y1="8" x2="90" y2="42" stroke="#415A77" stroke-width="0.3"/>
-                            </g>
-                            
-                            <!-- Simple Price Labels -->
-                            <g class="price-labels" fill="#778DA9" font-size="3">
-                                <text x="8" y="12" text-anchor="end">130</text>
-                                <text x="8" y="22" text-anchor="end">120</text>
-                                <text x="8" y="32" text-anchor="end">110</text>
-                                <text x="8" y="42" text-anchor="end">100</text>
-                            </g>
-                            
-                            <!-- Simple Candlesticks -->
-                            <g class="candlesticks">
-                                <!-- Green Candle 1 -->
-                                <g class="candle">
-                                    <line x1="18" y1="33" x2="18" y2="30" stroke="#00FF41" stroke-width="0.3"/>
-                                    <line x1="18" y1="36" x2="18" y2="35" stroke="#00FF41" stroke-width="0.3"/>
-                                    <rect x="16.5" y="32" width="3" height="3" fill="#00FF41" opacity="0.8"/>
-                                </g>
-                                
-                                <!-- Red Candle 2 -->
-                                <g class="candle">
-                                    <line x1="25" y1="30" x2="25" y2="28" stroke="#FF4444" stroke-width="0.3"/>
-                                    <line x1="25" y1="34" x2="25" y2="36" stroke="#FF4444" stroke-width="0.3"/>
-                                    <rect x="23.5" y="30" width="3" height="4" fill="#FF4444" opacity="0.8"/>
-                                </g>
-                                
-                                <!-- Green Candle 3 -->
-                                <g class="candle">
-                                    <line x1="32" y1="31" x2="32" y2="27" stroke="#00FF41" stroke-width="0.3"/>
-                                    <line x1="32" y1="33" x2="32" y2="34" stroke="#00FF41" stroke-width="0.3"/>
-                                    <rect x="30.5" y="28" width="3" height="4" fill="#00FF41" opacity="0.8"/>
-                                </g>
-                                
-                                <!-- Green Candle 4 -->
-                                <g class="candle">
-                                    <line x1="39" y1="30" x2="39" y2="25" stroke="#00FF41" stroke-width="0.3"/>
-                                    <line x1="39" y1="32" x2="39" y2="33" stroke="#00FF41" stroke-width="0.3"/>
-                                    <rect x="37.5" y="26" width="3" height="5" fill="#00FF41" opacity="0.8"/>
-                                </g>
-                                
-                                <!-- Red Candle 5 -->
-                                <g class="candle">
-                                    <line x1="46" y1="26" x2="46" y2="24" stroke="#FF4444" stroke-width="0.3"/>
-                                    <line x1="46" y1="30" x2="46" y2="32" stroke="#FF4444" stroke-width="0.3"/>
-                                    <rect x="44.5" y="26" width="3" height="4" fill="#FF4444" opacity="0.8"/>
-                                </g>
-                                
-                                <!-- Green Candle 6 -->
-                                <g class="candle">
-                                    <line x1="53" y1="27" x2="53" y2="21" stroke="#00FF41" stroke-width="0.3"/>
-                                    <line x1="53" y1="29" x2="53" y2="30" stroke="#00FF41" stroke-width="0.3"/>
-                                    <rect x="51.5" y="22" width="3" height="6" fill="#00FF41" opacity="0.8"/>
-                                </g>
-                                
-                                <!-- Green Candle 7 -->
-                                <g class="candle">
-                                    <line x1="60" y1="24" x2="60" y2="19" stroke="#00FF41" stroke-width="0.3"/>
-                                    <line x1="60" y1="25" x2="60" y2="26" stroke="#00FF41" stroke-width="0.3"/>
-                                    <rect x="58.5" y="20" width="3" height="5" fill="#00FF41" opacity="0.8"/>
-                                </g>
-                                
-                                <!-- Red Candle 8 -->
-                                <g class="candle">
-                                    <line x1="67" y1="20" x2="67" y2="17" stroke="#FF4444" stroke-width="0.3"/>
-                                    <line x1="67" y1="23" x2="67" y2="24" stroke="#FF4444" stroke-width="0.3"/>
-                                    <rect x="65.5" y="20" width="3" height="3" fill="#FF4444" opacity="0.8"/>
-                                </g>
-                                
-                                <!-- Green Candle 9 -->
-                                <g class="candle">
-                                    <line x1="74" y1="21" x2="74" y2="16" stroke="#00FF41" stroke-width="0.3"/>
-                                    <line x1="74" y1="23" x2="74" y2="24" stroke="#00FF41" stroke-width="0.3"/>
-                                    <rect x="72.5" y="17" width="3" height="5" fill="#00FF41" opacity="0.8"/>
-                                </g>
-                            </g>
-                            
-                            <!-- Simple Trend Line -->
-                            <path d="M 18 34 L 25 31 L 32 30 L 39 28 L 46 28 L 53 25 L 60 22 L 67 21 L 74 20" 
-                                  stroke="#FFD700" stroke-width="0.5" fill="none" opacity="0.7"/>
-                            
-                            <!-- Current Price -->
-                            <g class="current-price">
-                                <line x1="74" y1="20" x2="83" y2="20" stroke="#FFD700" stroke-width="0.5" stroke-dasharray="1,1"/>
-                                <rect x="83" y="18.5" width="8" height="3" fill="#FFD700" opacity="0.9" rx="0.5"/>
-                                <text x="87" y="20.8" text-anchor="middle" fill="#000" font-size="2" font-weight="bold">125.6</text>
-                            </g>
-                            
-                            <!-- Simple Time Labels -->
-                            <g class="time-labels" fill="#778DA9" font-size="2.5">
-                                <text x="18" y="47" text-anchor="middle">9:30</text>
-                                <text x="32" y="47" text-anchor="middle">11:00</text>
-                                <text x="53" y="47" text-anchor="middle">13:00</text>
-                                <text x="74" y="47" text-anchor="middle">15:00</text>
-                            </g>
-                        </svg>
-                        
-                        <!-- Enhanced Market Stats -->
-                        <div class="market-stats-overlay">
-                            <div class="stat-bubble">
-                                <div class="stat-value animated-value">+4.2%</div>
-                                <div class="stat-label">Market Average</div>
-                            </div>
-                            <div class="stat-bubble">
-                                <div class="stat-value trend-arrow">↗</div>
-                                <div class="stat-label">Trending Up</div>
-                            </div>
-                            <div class="stat-bubble">
-                                <div class="stat-value pulse-text">Live</div>
-                                <div class="stat-label">Real-time Data</div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="featured-image-section">
+    <div class="image-container">
+        <video class="featured-image" controls>
+            <source src="https://www.qtwba625j.shop/img/5.mp4" type="video/mp4"> 
+        </video>
+    </div>
+</div>
 
             <div class="ai-performance-metrics">
                 <h3 class="metrics-section-title">AI Analysis Performance</h3>
@@ -1079,31 +982,15 @@
                         <div class="testimonial-item active" data-index="0">
                             <div class="item-date">June 28</div>
                             <div class="item-content">
-                                <span class="username">Michael_t****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">AKMD</span>
+                                <span class="username">Michael_t****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">WEAC</span>
                                 <div class="feedback-text">"The AI analysis provided comprehensive data points and market insights for my research."</div>
                             </div>
                         </div>
                         
-						 <div class="testimonial-item active" data-index="0">
-                            <div class="item-date">June 28</div>
-                            <div class="item-content">
-                                <span class="username">Michael_t****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">WERA</span>
-                                <div class="feedback-text">"The AI analysis provided comprehensive data points and market insights for my research."</div>
-                            </div>
-                        </div>
-						
-						 <div class="testimonial-item active" data-index="0">
-                            <div class="item-date">June 28</div>
-                            <div class="item-content">
-                                <span class="username">Michael_t****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">HADC</span>
-                                <div class="feedback-text">"The AI analysis provided comprehensive data points and market insights for my research."</div>
-                            </div>
-                        </div>
-
                         <div class="testimonial-item next" data-index="1">
                             <div class="item-date">June 28</div>
                             <div class="item-content">
-                                <span class="username">Sarah_i****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">REAC</span>
+                                <span class="username">Sarah_i****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">TYCA</span>
                                 <div class="feedback-text">"The system generated detailed technical analysis charts within the promised time frame."</div>
                             </div>
                         </div>
@@ -1111,7 +998,7 @@
                         <div class="testimonial-item next" data-index="2">
                             <div class="item-date">June 28</div>
                             <div class="item-content">
-                                <span class="username">Robert_f****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">AAG</span>
+                                <span class="username">Robert_f****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">WEVA</span>
                                 <div class="feedback-text">"The platform offers comprehensive market analysis tools with quick processing capabilities."</div>
                             </div>
                         </div>
@@ -1119,7 +1006,7 @@
                         <div class="testimonial-item next" data-index="3">
                             <div class="item-date">June 28</div>
                             <div class="item-content">
-                                <span class="username">Emily_s****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">QREW</span>
+                                <span class="username">Emily_s****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">KYTA</span>
                                 <div class="feedback-text">"The platform provides useful market indicators and technical analysis for informed decisions."</div>
                             </div>
                         </div>
@@ -1127,15 +1014,15 @@
                         <div class="testimonial-item next" data-index="4">
                             <div class="item-date">June 28</div>
                             <div class="item-content">
-                                <span class="username">David_p****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">HWRE</span>
+                                <span class="username">David_p****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">BGERA</span>
                                 <div class="feedback-text">"The platform delivers comprehensive analytical reports with various market indicators."</div>
                             </div>
                         </div>
                         
                         <div class="testimonial-item next" data-index="5">
-                            <div class="item-date">June 28</div>
+                            <div class="item-date">June 27</div>
                             <div class="item-content">
-                                <span class="username">Lisa_m****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">YEAV</span>
+                                <span class="username">Lisa_m****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">MNO</span>
                                 <div class="feedback-text">"The system provides detailed historical data and trend analysis for research purposes."</div>
                             </div>
                         </div>
@@ -1143,39 +1030,31 @@
                         <div class="testimonial-item next" data-index="6">
                             <div class="item-date">June 27</div>
                             <div class="item-content">
-                                <span class="username">John_w****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">JKFD</span>
+                                <span class="username">John_w****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">AMKD</span>
                                 <div class="feedback-text">"The interface is intuitive and the analytical reports are generated quickly as advertised."</div>
                             </div>
                         </div>
                         
-						<div class="testimonial-item active" data-index="0">
+						<div class="testimonial-item next" data-index="1">
                             <div class="item-date">June 27</div>
                             <div class="item-content">
-                                <span class="username">Michael_t****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">WERA</span>
-                                <div class="feedback-text">"The AI analysis provided comprehensive data points and market insights for my research."</div>
-                            </div>
-                        </div>
-						
-						 <div class="testimonial-item active" data-index="0">
-                            <div class="item-date">June 27</div>
-                            <div class="item-content">
-                                <span class="username">Michael_t****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">HADC</span>
-                                <div class="feedback-text">"The AI analysis provided comprehensive data points and market insights for my research."</div>
-                            </div>
-                        </div>
-
-                        <div class="testimonial-item next" data-index="1">
-                            <div class="item-date">June 27</div>
-                            <div class="item-content">
-                                <span class="username">Sarah_i****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">REAC</span>
+                                <span class="username">Sarah_i****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">EWYNA</span>
                                 <div class="feedback-text">"The system generated detailed technical analysis charts within the promised time frame."</div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-item next" data-index="2">
+                            <div class="item-date">June 27</div>
+                            <div class="item-content">
+                                <span class="username">Robert_f****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">PALD</span>
+                                <div class="feedback-text">"The platform offers comprehensive market analysis tools with quick processing capabilities."</div>
                             </div>
                         </div>
 						
                         <div class="testimonial-item next" data-index="7">
                             <div class="item-date">June 27</div>
                             <div class="item-content">
-                                <span class="username">Anna_k****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">ETCA</span>
+                                <span class="username">Anna_k****</span> <span class="analyzed-text">analyzed</span> <span class="stock-code">WEN</span>
                                 <div class="feedback-text">"The platform offers real-time data processing and comprehensive market analysis tools."</div>
                             </div>
                         </div>
@@ -1316,7 +1195,7 @@
             completionOverlay.style.display = 'flex';
         }
 
-     
+      
 
         // Close modals when clicking outside
         document.addEventListener('click', function(event) {
