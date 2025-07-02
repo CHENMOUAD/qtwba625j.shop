@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Intelligent Stock Signal Analytics Platform</title>
+    <style>
+        :root {
+            --primary-bg-color: #000000;
+            --secondary-bg-color: #ffffff;
+            --primary-text-color: #ffffff;
+            --secondary-text-color: #000000;
+            --accent-color: #000000;
+            --warning-color: #000000;
+            --gradient-primary: linear-gradient(135deg, #000000, #333333);
+            --gradient-secondary: linear-gradient(135deg, #333333, #666666);
+            --deep-black: #0a0a0a;
+            --light-gray: #f8f8f8;
+            --medium-gray: #888888;
+            --dark-gray: #222222;
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 16px;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.3);
+            --shadow-medium: 0 4px 20px rgba(0,0,0,0.5);
+            --shadow-heavy: 0 8px 40px rgba(0,0,0,0.7);
+            --shadow-deep: 0 12px 60px rgba(0,0,0,0.9);
+            --transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .typography-primary-heading {
+            font-family: 'Arial Black', Arial, sans-serif;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .typography-secondary-heading {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            line-height: 1.3;
+        }
+
+        .typography-body-text {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            line-height: 1.6;
+        }
+
+        .typography-accent-text {
+            font-family: Arial, sans-serif;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .layout-container-main {
+            background: var(--deep-black);
+            color: var(--primary-text-color);
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .navigation-disclaimer-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
+            padding: 12px 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: var(--shadow-deep);
+            border-bottom: 2px solid var(--primary-bg-color);
+        }
+
+        .content-section-wrapper {
+            margin-top: 60px;
+            padding: 0 20px;
+        }
+
+        .hero-section-container {
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .urgent-banner {
+            background: var(--primary-bg-color);
+            color: var(--primary-text-color);
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            animation: flash 2s infinite;
+        }
+
+        .hero-content-primary {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-headline-main {
+            font-size: clamp(32px, 5vw, 56px);
+            margin-bottom: 20px;
+            color: var(--secondary-text-color);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero-subheadline-text {
+            font-size: clamp(18px, 3vw, 24px);
+            margin-bottom: 30px;
+            color: var(--dark-gray);
+        }
+
+        .hero-description-paragraph {
+            font-size: clamp(16px, 2.5vw, 18px);
+            margin-bottom: 40px;
+            color: var(--medium-gray);
+        }
+
+        .stats-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(0,0,0,0.05);
+            border-radius: var(--border-radius-lg);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--primary-bg-color);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--medium-gray);
+            margin-top: 5px;
+        }
+
+        .countdown-timer {
+            background: var(--primary-bg-color);
+            color: var(--primary-text-color);
+            padding: 20px;
+            border-radius: var(--border-radius-lg);
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .timer-unit {
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
+            padding: 10px 15px;
+            border-radius: var(--border-radius-md);
+            min-width: 60px;
+        }
+
+        .timer-number {
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .timer-label {
+            font-size: 12px;
+        }
+
+        .visual-content-image-container {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .responsive-image-element {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-heavy);
+            transition: var(--transition-default);
+        }
+
+        .responsive-image-element:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 60px rgba(0,0,0,0.25);
+        }
+
+        .interactive-button-primary {
+            background: var(--primary-bg-color);
+            color: var(--primary-text-color);
+            border: 2px solid var(--secondary-text-color);
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: var(--border-radius-lg);
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            box-shadow: var(--shadow-heavy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-button-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .interactive-button-primary:hover::before {
+            left: 100%;
+        }
+
+        .interactive-button-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-deep);
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
+        }
+
+        .interactive-button-primary:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .problems-section-layout {
+            background: var(--primary-bg-color);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .problems-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pain-points-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .pain-icon {
+            font-size: 48px;
+            opacity: 0.7;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .content-grid-problems {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .problem-card-component {
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
+            padding: 30px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-default);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card-component::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-primary);
+        }
+
+        .problem-card-component:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .problem-number-indicator {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--medium-gray);
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .solutions-section-background {
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .benefits-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+            padding: 40px;
+            background: rgba(0,0,0,0.05);
+            border-radius: var(--border-radius-lg);
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .benefit-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .benefit-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .solutions-grid-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .solution-feature-card {
+            background: var(--primary-bg-color);
+            color: var(--primary-text-color);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-bounce);
+            position: relative;
+        }
+
+        .solution-feature-card:hover {
+            transform: translateY(-15px) rotate(1deg);
+            box-shadow: var(--shadow-deep);
+        }
+
+        .feature-icon-placeholder {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-bg-color);
+        }
+
+        .testimonials-section-container {
+            background: var(--primary-bg-color);
+            padding: 80px 0;
+        }
+
+        .social-proof-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .proof-item {
+            text-align: center;
+            color: var(--primary-text-color);
+        }
+
+        .proof-number {
+            font-size: 36px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .proof-text {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .testimonials-grid-responsive {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .testimonial-card-element {
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
+            padding: 35px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-default);
+            position: relative;
+        }
+
+        .testimonial-card-element::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 80px;
+            color: var(--accent-color);
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .testimonial-card-element:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            font-size: 18px;
+            color: var(--medium-gray);
+        }
+
+        .cta-section-final {
+            background: var(--gradient-primary);
+            color: var(--secondary-bg-color);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .scarcity-banner {
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
+            padding: 15px;
+            border-radius: var(--border-radius-md);
+            margin: 30px 0;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        .cta-content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cta-headline-prominent {
+            font-size: clamp(28px, 4vw, 48px);
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .footer-legal-section {
+            background: #111;
+            color: #888;
+            padding: 60px 20px 40px;
+        }
+
+        .legal-disclaimer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .risk-warning-title {
+            color: var(--warning-color);
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .legal-links-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .legal-link-element {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition-default);
+        }
+
+        .legal-link-element:hover {
+            color: var(--accent-color);
+        }
+
+        .whatsapp-widget-container {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+        }
+
+        .whatsapp-icon-button {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-bg-color);
+            border: 2px solid var(--secondary-bg-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-default);
+            position: relative;
+            animation: breathe-whatsapp 2s ease-in-out infinite;
+        }
+
+        .whatsapp-icon-button:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-deep);
+            background: var(--secondary-bg-color);
+        }
+
+        .notification-badge-indicator {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
+            border: 2px solid var(--primary-bg-color);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            animation: pulse-notification 1.5s ease-in-out infinite;
+        }
+
+        .floating-cta-button-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 998;
+        }
+
+        .floating-button-element {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: var(--secondary-bg-color);
+            border: none;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            animation: breathe-button 3s ease-in-out infinite;
+            transition: var(--transition-default);
+        }
+
+        .floating-button-element:hover {
+            background: linear-gradient(135deg, #333333, #555555);
+            transform: translateY(-2px);
+        }
+
+        .section-title-primary {
+            font-size: clamp(24px, 4vw, 40px);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title-primary::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-text-color);
+            border-radius: 2px;
+        }
+
+        .progress-indicator {
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--secondary-bg-color);
+            width: 0%;
+            border-radius: 2px;
+            animation: progress-fill 3s ease-out forwards;
+        }
+
+        @keyframes flash {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.5; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes progress-fill {
+            0% { width: 0%; }
+            100% { width: 85%; }
+        }
+
+        @keyframes breathe-whatsapp {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes pulse-notification {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        @keyframes breathe-button {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        @media (max-width: 768px) {
+            .stats-showcase {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .timer-display {
+                gap: 10px;
+            }
+            
+            .timer-unit {
+                min-width: 50px;
+                padding: 8px 12px;
+            }
+            
+            .content-grid-problems {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .solutions-grid-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .testimonials-grid-responsive {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-proof-stats {
+                gap: 30px;
+            }
+            
+            .benefits-showcase {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .pain-points-visual {
+                gap: 15px;
+            }
+            
+            .pain-icon {
+                font-size: 36px;
+            }
+            
+            .legal-links-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .whatsapp-widget-container {
+                right: 15px;
+            }
+            
+            .whatsapp-icon-button {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout-container-main">
+        <!-- Fixed Disclaimer Banner -->
+        <header class="navigation-disclaimer-banner">
+            <div class="typography-accent-text">
+                📊 Data Analysis Service | This course only teaches data analysis methods, does not recommend any stocks, investment has risks
+            </div>
+        </header>
+
+        <!-- Urgent Banner -->
+        <div class="urgent-banner">
+            🚨 LIMITED TIME: Free Trial Access - Join 10,000+ Successful Investors Today!
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero-section-container">
+            <div class="hero-content-primary">
+                <h1 class="hero-headline-main typography-primary-heading">
+                    Stock Investment New Era: Intelligent Signal Indicators
+                </h1>
+                <h2 class="hero-subheadline-text typography-secondary-heading">
+                    Are you feeling lost in the stock market?
+                </h2>
+                <p class="hero-description-paragraph typography-body-text">
+                    In an ever-changing market, many people miss opportunities due to lack of information. Now, change your investment approach and embrace the new era of intelligent signals!
+                </p>
+
+                <!-- Success Stats -->
+                <div class="stats-showcase">
+                    <div class="stat-item">
+                        <span class="stat-number">10,000+</span>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">87%</span>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">$2.5M+</span>
+                        <div class="stat-label">Profits Generated</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <div class="stat-label">Market Monitoring</div>
+                    </div>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="countdown-timer">
+                    <div class="typography-accent-text">⏰ Limited Time Free Trial Expires In:</div>
+                    <div class="timer-display">
+                        <div class="timer-unit">
+                            <span class="timer-number" id="hours">12</span>
+                            <div class="timer-label">Hours</div>
+                        </div>
+                        <div class="timer-unit">
+                            <span class="timer-number" id="minutes">34</span>
+                            <div class="timer-label">Minutes</div>
+                        </div>
+                        <div class="timer-unit">
+                            <span class="timer-number" id="seconds">56</span>
+                            <div class="timer-label">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual-content-image-container">
+                    <img src="img/4.jpg" alt="Investment Analytics Dashboard" class="responsive-image-element">
+                </div>
+                <button class="interactive-button-primary typography-accent-text" onclick="k2()">
+                    🚀 Start Your Intelligent Investment Journey
+                </button>
+            </div>
+        </section>
+
+        <!-- Problems Section -->
+        <section class="problems-section-layout">
+            <div class="content-section-wrapper">
+                <div class="problems-intro">
+                    <h2 class="section-title-primary typography-primary-heading">Why 90% of Traders Fail</h2>
+                    <p class="typography-body-text" style="font-size: 18px; margin-bottom: 30px; text-align: center; color: #ccc;">
+                        Discover the hidden obstacles that keep investors from achieving success
+                    </p>
+                    
+                    <!-- Visual Pain Points -->
+                    <div class="pain-points-visual">
+                        <span class="pain-icon">😰</span>
+                        <span class="pain-icon">📉</span>
+                        <span class="pain-icon">💸</span>
+                        <span class="pain-icon">⏰</span>
+                        <span class="pain-icon">🤔</span>
+                    </div>
+                </div>
+
+                <div class="content-grid-problems">
+                    <article class="problem-card-component">
+                        <div class="problem-number-indicator">1</div>
+                        <h3 class="typography-secondary-heading" style="margin-bottom: 15px;">Missing Opportunities</h3>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" style="animation-delay: 0.5s;"></div>
+                        </div>
+                        <p class="typography-body-text">Every day there are countless trading opportunities, but you don't know when to enter or exit. Many people miss the best timing due to hesitation, leading to losses or halved profits.</p>
+                        <div style="margin-top: 15px; font-size: 14px; color: #999;">
+                            💔 Average Loss: $2,500 per missed opportunity
+                        </div>
+                    </article>
+                    
+                    <article class="problem-card-component">
+                        <div class="problem-number-indicator">2</div>
+                        <h3 class="typography-secondary-heading" style="margin-bottom: 15px;">Information Overload</h3>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" style="animation-delay: 1s;"></div>
+                        </div>
+                        <p class="typography-body-text">News, social media, and analysis reports emerge endlessly, making it impossible for you to extract truly valuable investment signals. Faced with massive information, many investors feel overwhelmed.</p>
+                        <div style="margin-top: 15px; font-size: 14px; color: #999;">
+                            📊 Daily: 10,000+ news articles, 500+ reports
+                        </div>
+                    </article>
+                    
+                    <article class="problem-card-component">
+                        <div class="problem-number-indicator">3</div>
+                        <h3 class="typography-secondary-heading" style="margin-bottom: 15px;">Lack of Experience</h3>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" style="animation-delay: 1.5s;"></div>
+                        </div>
+                        <p class="typography-body-text">The threshold for stock investment seems high, and many beginners think they must have rich experience and professional knowledge to profit. This psychological barrier keeps many people from starting.</p>
+                        <div style="margin-top: 15px; font-size: 14px; color: #999;">
+                            📈 Learning Curve: 5-10 years to master
+                        </div>
+                    </article>
+                    
+                    <article class="problem-card-component">
+                        <div class="problem-number-indicator">4</div>
+                        <h3 class="typography-secondary-heading" style="margin-bottom: 15px;">Lack of Confidence</h3>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" style="animation-delay: 2s;"></div>
+                        </div>
+                        <p class="typography-body-text">At critical moments, lack of reliable decision support leads to hesitation when buying or selling, ultimately choosing to wait and see, which is often the wrong choice.</p>
+                        <div style="margin-top: 15px; font-size: 14px; color: #999;">
+                            ⚠️ Result: 70% miss profitable trades
+                        </div>
+                    </article>
+                </div>
+                <div class="visual-content-image-container">
+                    <img src="img/1.jpg" alt="Market Analysis Problems" class="responsive-image-element">
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <button class="interactive-button-primary" onclick="k2()">💪 Master Market Pulse</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solutions Section -->
+        <section class="solutions-section-background">
+            <div class="content-section-wrapper">
+                <h2 class="section-title-primary typography-primary-heading">Our Revolutionary Solutions</h2>
+                
+                <!-- Benefits Overview -->
+                <div class="benefits-showcase">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">⚡</span>
+                        <div class="benefit-title">Instant Alerts</div>
+                        <div class="benefit-text">Real-time notifications</div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎯</span>
+                        <div class="benefit-title">95% Accuracy</div>
+                        <div class="benefit-text">Proven track record</div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🛡️</span>
+                        <div class="benefit-title">Risk Management</div>
+                        <div class="benefit-text">Protect your capital</div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">📱</span>
+                        <div class="benefit-title">Mobile Ready</div>
+                        <div class="benefit-text">Trade anywhere</div>
+                    </div>
+                </div>
+
+                <div class="solutions-grid-layout">
+                    <article class="solution-feature-card">
+                        <div class="feature-icon-placeholder">📈</div>
+                        <h3 class="typography-secondary-heading" style="margin-bottom: 20px;">Real-time Buy/Sell Alerts</h3>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" style="animation-delay: 0.5s;"></div>
+                        </div>
+                        <p class="typography-body-text">The system automatically provides optimal buy and sell signals based on market dynamics, keeping you at the best decision points at all times. No matter how the market fluctuates, you can react quickly.</p>
+                        <div style="margin-top: 15px; font-size: 14px; opacity: 0.8;">
+                            ✅ Average response time: 0.3 seconds
+                        </div>
+                    </article>
+                    
+                    <article class="solution-feature-card">
+                        <div class="feature-icon-placeholder">🤖</div>
+                        <h3 class="typography-secondary-heading" style="margin-bottom: 20px;">Data-Driven Analysis</h3>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" style="animation-delay: 1s;"></div>
+                        </div>
+                        <p class="typography-body-text">Using big data and AI technology, the system analyzes massive data in real-time, identifies potential investment opportunities, and provides precise market predictions, eliminating uncertainty in investment decisions.</p>
+                        <div style="margin-top: 15px; font-size: 14px; opacity: 0.8;">
+                            ✅ Processes: 1M+ data points per second
+                        </div>
+                    </article>
+                    
+                    <article class="solution-feature-card">
+                        <div class="feature-icon-placeholder">📊</div>
+                        <h3 class="typography-secondary-heading" style="margin-bottom: 20px;">Historical Data Backtesting</h3>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" style="animation-delay: 1.5s;"></div>
+                        </div>
+                        <p class="typography-body-text">Provides historical data backtesting functionality to help you verify signal effectiveness, enhance your investment confidence, and ensure every decision you make is well-founded.</p>
+                        <div style="margin-top: 15px; font-size: 14px; opacity: 0.8;">
+                            ✅ Historical data: 20+ years coverage
+                        </div>
+                    </article>
+                    
+                    <article class="solution-feature-card">
+                        <div class="feature-icon-placeholder">🎯</div>
+                        <h3 class="typography-secondary-heading" style="margin-bottom: 20px;">Multi-dimensional Signal Analysis</h3>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" style="animation-delay: 2s;"></div>
+                        </div>
+                        <p class="typography-body-text">Combining technical indicators, market sentiment, and trend analysis to provide multi-dimensional signal interpretation, helping you comprehensively understand market dynamics.</p>
+                        <div style="margin-top: 15px; font-size: 14px; opacity: 0.8;">
+                            ✅ Analyzes: 50+ technical indicators
+                        </div>
+                    </article>
+                </div>
+                <div class="visual-content-image-container">
+                    <img src="img/2.jpg" alt="Solution Features" class="responsive-image-element">
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <button class="interactive-button-primary" onclick="k2()">🎯 Seize Every Investment Opportunity - Try Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section-container">
+            <div class="content-section-wrapper">
+                <h2 class="section-title-primary typography-primary-heading">Success Stories from Real Investors</h2>
+                
+                <!-- Social Proof Stats -->
+                <div class="social-proof-stats">
+                    <div class="proof-item">
+                        <span class="proof-number">4.9★</span>
+                        <div class="proof-text">User Rating</div>
+                    </div>
+                    <div class="proof-item">
+                        <span class="proof-number">2,847</span>
+                        <div class="proof-text">5-Star Reviews</div>
+                    </div>
+                    <div class="proof-item">
+                        <span class="proof-number">127%</span>
+                        <div class="proof-text">Avg. ROI Increase</div>
+                    </div>
+                </div>
+
+                <div class="testimonials-grid-responsive">
+                    <article class="testimonial-card-element">
+                        <div class="rating-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="typography-body-text" style="margin-bottom: 20px; font-style: italic;">
+                            "This intelligent signal system completely changed my investment approach. I used to rely on intuition, but now I have data-driven decisions. My portfolio performance has improved by 40% in just 3 months!"
+                        </p>
+                        <div class="typography-accent-text">- Sarah M., Portfolio Manager</div>
+                        <div style="font-size: 12px; color: #999; margin-top: 5px;">📈 Profit: +$47,000 in 3 months</div>
+                    </article>
+                    
+                    <article class="testimonial-card-element">
+                        <div class="rating-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="typography-body-text" style="margin-bottom: 20px; font-style: italic;">
+                            "As a beginner investor, I was always afraid of making wrong decisions. This system gave me the confidence to enter the market. The real-time alerts are incredibly accurate, and I've never felt more secure about my investments."
+                        </p>
+                        <div class="typography-accent-text">- Michael R., Retail Investor</div>
+                        <div style="font-size: 12px; color: #999; margin-top: 5px;">💰 Starting capital: $5,000 → $12,500</div>
+                    </article>
+                    
+                    <article class="testimonial-card-element">
+                        <div class="rating-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="typography-body-text" style="margin-bottom: 20px; font-style: italic;">
+                            "The backtesting feature is phenomenal. I can validate strategies before implementing them, which has saved me from countless potential losses. This is a game-changer for serious investors."
+                        </p>
+                        <div class="typography-accent-text">- Jennifer L., Day Trader</div>
+                        <div style="font-size: 12px; color: #999; margin-top: 5px;">🛡️ Risk reduced by 65%, profits up 85%</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="cta-section-final">
+            <div class="cta-content-wrapper">
+                <h2 class="cta-headline-prominent typography-primary-heading">Don't Hesitate!</h2>
+                
+                <!-- Scarcity Element -->
+                <div class="scarcity-banner">
+                    ⚠️ Only 127 Free Trial Spots Remaining Today!
+                </div>
+                
+                <p class="typography-body-text" style="font-size: 20px; margin-bottom: 30px;">
+                    Register now to get a free trial experience and personally feel how intelligent signal indicators can transform your investment journey.
+                </p>
+                <button class="interactive-button-primary" onclick="k2()" style="background: white; color: #000000; font-size: 20px; padding: 20px 50px; border: 2px solid #000000;">
+                    🚀 Start Free Trial Now!
+                </button>
+                <div style="margin-top: 40px;">
+                    <h3 class="typography-secondary-heading" style="margin-bottom: 20px;">Invest in the Future, Start Now!</h3>
+                    <p class="typography-body-text" style="font-size: 18px;">
+                        Join us, unleash your investment potential, start your intelligent investment journey, and seize every wealth opportunity!
+                    </p>
+                </div>
+                
+                <!-- Guarantee Badge -->
+                <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                    <div style="font-size: 18px; font-weight: bold;">🛡️ 30-Day Money-Back Guarantee</div>
+                    <div style="font-size: 14px; margin-top: 5px;">Try risk-free for 30 days. Not satisfied? Get 100% refund.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Legal Section -->
+        <footer class="footer-legal-section">
+            <div class="legal-disclaimer-content">
+                <h3 class="risk-warning-title">⚠️ Important Risk Disclosure</h3>
+                <div class="typography-body-text" style="text-align: left; max-width: 800px; margin: 0 auto;">
+                    <p style="margin-bottom: 10px;">* This service is for reference only and does not provide any investment advisory services or financial product trading services.</p>
+                    <p style="margin-bottom: 10px;">* The information provided is for reference only and should not be used as the basis for investment decisions.</p>
+                    <p style="margin-bottom: 10px;">* You bear the risk of final investment decisions yourself.</p>
+                    <p style="margin-bottom: 10px;">* Data accuracy is not guaranteed.</p>
+                </div>
+                <div class="legal-links-container">
+                    <a href="https://www.baidu.com" class="legal-link-element">Privacy Policy</a>
+                    <a href="https://www.baidu.com" class="legal-link-element">User Agreement</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- WhatsApp Widget -->
+        <div class="whatsapp-widget-container">
+            <div class="whatsapp-icon-button" onclick="k2()">
+                <span style="color: white; font-size: 24px;">💬</span>
+                <div class="notification-badge-indicator">1</div>
+            </div>
+        </div>
+
+        <!-- Floating CTA Button -->
+        <div class="floating-cta-button-container">
+            <button class="floating-button-element typography-accent-text" onclick="k2()">
+                🚀 Start Your Investment Journey - Free Trial Available!
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function k2() {
+            window.open('https://wa.me/123213', '_blank');
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            
+            let hours = parseInt(hoursEl.textContent);
+            let minutes = parseInt(minutesEl.textContent);
+            let seconds = parseInt(secondsEl.textContent);
+            
+            if (seconds > 0) {
+                seconds--;
+            } else {
+                seconds = 59;
+                if (minutes > 0) {
+                    minutes--;
+                } else {
+                    minutes = 59;
+                    if (hours > 0) {
+                        hours--;
+                    } else {
+                        hours = 23;
+                        minutes = 59;
+                        seconds = 59;
+                    }
+                }
+            }
+            
+            hoursEl.textContent = hours.toString().padStart(2, '0');
+            minutesEl.textContent = minutes.toString().padStart(2, '0');
+            secondsEl.textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+
+        // Smooth scrolling for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add intersection observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all card elements
+            document.querySelectorAll('.problem-card-component, .solution-feature-card, .testimonial-card-element').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+
+        // Prevent zoom on mobile
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
