@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>
-  function k2() {
-            window.open('https://wa.me/', '_blank');
-        }
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Intelligent Stock Signal Analytics Platform</title>
     <style>
         :root {
-            --primary-bg-color: #0c2340;
+            --primary-bg-color: #000000;
             --secondary-bg-color: #ffffff;
             --primary-text-color: #ffffff;
-            --secondary-text-color: #0c2340;
-            --accent-color: #ff6b35;
-            --warning-color: #ff8c42;
-            --gradient-primary: linear-gradient(135deg, #ff6b35, #ff8c42);
-            --gradient-secondary: linear-gradient(135deg, #0c2340, #1e3a5f);
-            --deep-blue: #041729;
-            --light-blue: #e8f4f8;
-            --medium-blue: #1e3a5f;
-            --dark-blue: #0a1f35;
-            --light-orange: #fff3ef;
-            --dark-orange: #e55a2b;
+            --secondary-text-color: #000000;
+            --accent-color: #000000;
+            --warning-color: #000000;
+            --gradient-primary: linear-gradient(135deg, #000000, #333333);
+            --gradient-secondary: linear-gradient(135deg, #333333, #666666);
+            --deep-black: #0a0a0a;
+            --light-gray: #f8f8f8;
+            --medium-gray: #888888;
+            --dark-gray: #222222;
             --border-radius-sm: 4px;
             --border-radius-md: 8px;
             --border-radius-lg: 16px;
-            --shadow-light: 0 2px 10px rgba(12,35,64,0.3);
-            --shadow-medium: 0 4px 20px rgba(12,35,64,0.5);
-            --shadow-heavy: 0 8px 40px rgba(12,35,64,0.7);
-            --shadow-deep: 0 12px 60px rgba(12,35,64,0.9);
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.3);
+            --shadow-medium: 0 4px 20px rgba(0,0,0,0.5);
+            --shadow-heavy: 0 8px 40px rgba(0,0,0,0.7);
+            --shadow-deep: 0 12px 60px rgba(0,0,0,0.9);
             --transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
@@ -67,7 +60,7 @@
         }
 
         .layout-container-main {
-            background: var(--deep-blue);
+            background: var(--deep-black);
             color: var(--primary-text-color);
             min-height: 100vh;
             font-family: Arial, sans-serif;
@@ -79,7 +72,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: var(--light-orange);
+            background: var(--secondary-bg-color);
             color: var(--secondary-text-color);
             padding: 12px 20px;
             text-align: center;
@@ -87,7 +80,7 @@
             font-size: 14px;
             z-index: 1000;
             box-shadow: var(--shadow-deep);
-            border-bottom: 2px solid var(--accent-color);
+            border-bottom: 2px solid var(--primary-bg-color);
         }
 
         .content-section-wrapper {
@@ -96,7 +89,7 @@
         }
 
         .hero-section-container {
-            background: var(--light-blue);
+            background: var(--secondary-bg-color);
             color: var(--secondary-text-color);
             padding: 80px 0;
             text-align: center;
@@ -104,11 +97,9 @@
             overflow: hidden;
         }
 
-
-
         .urgent-banner {
-            background: var(--accent-color);
-            color: var(--secondary-bg-color);
+            background: var(--primary-bg-color);
+            color: var(--primary-text-color);
             padding: 15px;
             text-align: center;
             font-weight: bold;
@@ -125,20 +116,20 @@
         .hero-headline-main {
             font-size: clamp(32px, 5vw, 56px);
             margin-bottom: 20px;
-            color: var(--primary-bg-color);
-            text-shadow: 2px 2px 8px rgba(255,107,53,0.3);
+            color: var(--secondary-text-color);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
         }
 
         .hero-subheadline-text {
             font-size: clamp(18px, 3vw, 24px);
             margin-bottom: 30px;
-            color: var(--medium-blue);
+            color: var(--dark-gray);
         }
 
         .hero-description-paragraph {
             font-size: clamp(16px, 2.5vw, 18px);
             margin-bottom: 40px;
-            color: #666;
+            color: var(--medium-gray);
         }
 
         .stats-showcase {
@@ -147,9 +138,8 @@
             gap: 30px;
             margin: 40px 0;
             padding: 30px;
-            background: rgba(255,107,53,0.1);
+            background: rgba(0,0,0,0.05);
             border-radius: var(--border-radius-lg);
-            border: 2px solid var(--accent-color);
         }
 
         .stat-item {
@@ -159,13 +149,13 @@
         .stat-number {
             font-size: 48px;
             font-weight: 900;
-            color: var(--accent-color);
+            color: var(--primary-bg-color);
             display: block;
         }
 
         .stat-label {
             font-size: 14px;
-            color: var(--medium-blue);
+            color: var(--medium-gray);
             margin-top: 5px;
         }
 
@@ -176,7 +166,6 @@
             border-radius: var(--border-radius-lg);
             margin: 30px 0;
             text-align: center;
-            border: 2px solid var(--accent-color);
         }
 
         .timer-display {
@@ -187,8 +176,8 @@
         }
 
         .timer-unit {
-            background: var(--accent-color);
-            color: var(--secondary-bg-color);
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
             padding: 10px 15px;
             border-radius: var(--border-radius-md);
             min-width: 60px;
@@ -215,18 +204,17 @@
             border-radius: var(--border-radius-lg);
             box-shadow: var(--shadow-heavy);
             transition: var(--transition-default);
-            border: 3px solid var(--accent-color);
         }
 
         .responsive-image-element:hover {
             transform: scale(1.02);
-            box-shadow: 0 12px 60px rgba(255,107,53,0.4);
+            box-shadow: 0 12px 60px rgba(0,0,0,0.25);
         }
 
         .interactive-button-primary {
-            background: var(--gradient-primary);
-            color: var(--secondary-bg-color);
-            border: 2px solid var(--dark-orange);
+            background: var(--primary-bg-color);
+            color: var(--primary-text-color);
+            border: 2px solid var(--secondary-text-color);
             padding: 18px 40px;
             font-size: 18px;
             font-weight: bold;
@@ -245,7 +233,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
             transition: left 0.5s;
         }
 
@@ -255,8 +243,9 @@
 
         .interactive-button-primary:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 40px rgba(255,107,53,0.6);
-            background: var(--dark-orange);
+            box-shadow: var(--shadow-deep);
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
         }
 
         .interactive-button-primary:active {
@@ -287,14 +276,13 @@
             font-size: 48px;
             opacity: 0.7;
             animation: float 3s ease-in-out infinite;
-            filter: sepia(1) hue-rotate(15deg) saturate(2);
         }
 
         .content-grid-problems {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             padding: 0 20px;
         }
@@ -308,7 +296,6 @@
             transition: var(--transition-default);
             position: relative;
             overflow: hidden;
-            border-top: 4px solid var(--accent-color);
         }
 
         .problem-card-component::before {
@@ -323,19 +310,19 @@
 
         .problem-card-component:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255,107,53,0.3);
+            box-shadow: var(--shadow-heavy);
         }
 
         .problem-number-indicator {
             font-size: 48px;
             font-weight: 900;
-            color: var(--accent-color);
+            color: var(--medium-gray);
             margin-bottom: 15px;
             opacity: 0.8;
         }
 
         .solutions-section-background {
-            background: var(--light-blue);
+            background: var(--secondary-bg-color);
             color: var(--secondary-text-color);
             padding: 80px 0;
             position: relative;
@@ -347,9 +334,8 @@
             gap: 30px;
             margin: 50px 0;
             padding: 40px;
-            background: rgba(255,107,53,0.1);
+            background: rgba(0,0,0,0.05);
             border-radius: var(--border-radius-lg);
-            border: 2px solid var(--accent-color);
         }
 
         .benefit-item {
@@ -361,24 +347,18 @@
             font-size: 36px;
             margin-bottom: 15px;
             display: block;
-            filter: sepia(1) hue-rotate(15deg) saturate(2);
         }
 
         .benefit-title {
             font-weight: bold;
             margin-bottom: 10px;
-            color: var(--primary-bg-color);
-        }
-
-        .benefit-text {
-            color: var(--medium-blue);
         }
 
         .solutions-grid-layout {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             padding: 0 20px;
         }
@@ -391,18 +371,17 @@
             box-shadow: var(--shadow-medium);
             transition: var(--transition-bounce);
             position: relative;
-            border-top: 4px solid var(--accent-color);
         }
 
         .solution-feature-card:hover {
             transform: translateY(-15px) rotate(1deg);
-            box-shadow: 0 25px 50px rgba(255,107,53,0.4);
+            box-shadow: var(--shadow-deep);
         }
 
         .feature-icon-placeholder {
             width: 60px;
             height: 60px;
-            background: var(--gradient-primary);
+            background: var(--gradient-secondary);
             border-radius: 50%;
             margin-bottom: 20px;
             display: flex;
@@ -410,11 +389,11 @@
             justify-content: center;
             font-size: 24px;
             font-weight: bold;
-            color: var(--secondary-bg-color);
+            color: var(--primary-bg-color);
         }
 
         .testimonials-section-container {
-            background: var(--dark-blue);
+            background: var(--primary-bg-color);
             padding: 80px 0;
         }
 
@@ -435,7 +414,6 @@
             font-size: 36px;
             font-weight: bold;
             display: block;
-            color: var(--accent-color);
         }
 
         .proof-text {
@@ -460,7 +438,6 @@
             box-shadow: var(--shadow-medium);
             transition: var(--transition-default);
             position: relative;
-            border-left: 4px solid var(--accent-color);
         }
 
         .testimonial-card-element::before {
@@ -476,7 +453,7 @@
 
         .testimonial-card-element:hover {
             transform: scale(1.03);
-            box-shadow: 0 15px 30px rgba(255,107,53,0.3);
+            box-shadow: var(--shadow-heavy);
         }
 
         .rating-stars {
@@ -487,20 +464,20 @@
 
         .star {
             font-size: 18px;
-            color: var(--accent-color);
+            color: var(--medium-gray);
         }
 
         .cta-section-final {
-            background: var(--gradient-secondary);
-            color: var(--primary-text-color);
+            background: var(--gradient-primary);
+            color: var(--secondary-bg-color);
             padding: 100px 0;
             text-align: center;
             position: relative;
         }
 
         .scarcity-banner {
-            background: var(--accent-color);
-            color: var(--secondary-bg-color);
+            background: var(--secondary-bg-color);
+            color: var(--secondary-text-color);
             padding: 15px;
             border-radius: var(--border-radius-md);
             margin: 30px 0;
@@ -521,8 +498,8 @@
         }
 
         .footer-legal-section {
-            background: var(--deep-blue);
-            color: #ccc;
+            background: #111;
+            color: #888;
             padding: 60px 20px 40px;
         }
 
@@ -533,7 +510,7 @@
         }
 
         .risk-warning-title {
-            color: var(--accent-color);
+            color: var(--warning-color);
             font-size: 20px;
             margin-bottom: 20px;
             font-weight: bold;
@@ -568,8 +545,8 @@
         .whatsapp-icon-button {
             width: 60px;
             height: 60px;
-            background: var(--accent-color);
-            border: 2px solid var(--dark-orange);
+            background: var(--primary-bg-color);
+            border: 2px solid var(--secondary-bg-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -583,8 +560,8 @@
 
         .whatsapp-icon-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(255,107,53,0.6);
-            background: var(--dark-orange);
+            box-shadow: var(--shadow-deep);
+            background: var(--secondary-bg-color);
         }
 
         .notification-badge-indicator {
@@ -592,8 +569,8 @@
             top: -5px;
             right: -5px;
             background: var(--secondary-bg-color);
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
+            color: var(--secondary-text-color);
+            border: 2px solid var(--primary-bg-color);
             border-radius: 50%;
             width: 24px;
             height: 24px;
@@ -622,13 +599,13 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 -4px 20px rgba(255,107,53,0.4);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
             animation: breathe-button 3s ease-in-out infinite;
             transition: var(--transition-default);
         }
 
         .floating-button-element:hover {
-            background: linear-gradient(135deg, #e55a2b, #ff6b35);
+            background: linear-gradient(135deg, #333333, #555555);
             transform: translateY(-2px);
         }
 
@@ -647,13 +624,13 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--accent-color);
+            background: var(--secondary-text-color);
             border-radius: 2px;
         }
 
         .progress-indicator {
             height: 4px;
-            background: rgba(255,107,53,0.2);
+            background: rgba(255,255,255,0.2);
             border-radius: 2px;
             margin: 20px 0;
             overflow: hidden;
@@ -661,7 +638,7 @@
 
         .progress-bar {
             height: 100%;
-            background: var(--accent-color);
+            background: var(--secondary-bg-color);
             width: 0%;
             border-radius: 2px;
             animation: progress-fill 3s ease-out forwards;
@@ -669,7 +646,7 @@
 
         @keyframes flash {
             0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0.7; }
+            25%, 75% { opacity: 0.5; }
         }
 
         @keyframes pulse {
@@ -791,7 +768,25 @@
                     In an ever-changing market, many people miss opportunities due to lack of information. Now, change your investment approach and embrace the new era of intelligent signals!
                 </p>
 
-
+                <!-- Success Stats -->
+                <div class="stats-showcase">
+                    <div class="stat-item">
+                        <span class="stat-number">10,000+</span>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">87%</span>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">$2.5M+</span>
+                        <div class="stat-label">Profits Generated</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <div class="stat-label">Market Monitoring</div>
+                    </div>
+                </div>
 
                 <!-- Countdown Timer -->
                 <div class="countdown-timer">
@@ -1068,7 +1063,7 @@
                 <p class="typography-body-text" style="font-size: 20px; margin-bottom: 30px;">
                     Register now to get a free trial experience and personally feel how intelligent signal indicators can transform your investment journey.
                 </p>
-                <button class="interactive-button-primary" onclick="k2()" style="background: #ff6b35; color: #ffffff; font-size: 20px; padding: 20px 50px; border: 2px solid #e55a2b;">
+                <button class="interactive-button-primary" onclick="k2()" style="background: white; color: #000000; font-size: 20px; padding: 20px 50px; border: 2px solid #000000;">
                     🚀 Start Free Trial Now!
                 </button>
                 <div style="margin-top: 40px;">
@@ -1079,7 +1074,7 @@
                 </div>
                 
                 <!-- Guarantee Badge -->
-                <div style="margin-top: 30px; padding: 20px; background: rgba(255,107,53,0.2); border-radius: 10px; border: 2px solid #ff6b35;">
+                <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px;">
                     <div style="font-size: 18px; font-weight: bold;">🛡️ 30-Day Money-Back Guarantee</div>
                     <div style="font-size: 14px; margin-top: 5px;">Try risk-free for 30 days. Not satisfied? Get 100% refund.</div>
                 </div>
@@ -1097,9 +1092,8 @@
                     <p style="margin-bottom: 10px;">* Data accuracy is not guaranteed.</p>
                 </div>
                 <div class="legal-links-container">
-                    <a href="Privacy.html" class="legal-link-element">Privacy Policy</a>
-                    <a href="terms.html" class="legal-link-element">User Agreement</a>
-					<a href="Disclaimer.html" class="legal-link-element">Disclaimer</a>
+                    <a href="https://www.baidu.com" class="legal-link-element">Privacy Policy</a>
+                    <a href="https://www.baidu.com" class="legal-link-element">User Agreement</a>
                 </div>
             </div>
         </footer>
@@ -1121,7 +1115,9 @@
     </div>
 
     <script>
-      
+        function k2() {
+            window.open('https://wa.me/123213', '_blank');
+        }
 
         // Countdown Timer
         function updateCountdown() {
